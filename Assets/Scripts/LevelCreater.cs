@@ -37,6 +37,7 @@ public class LevelCreater : MonoBehaviour
         float xStart = -8f, yStart = 4.7f;
         float xEnd = 8f, yEnd = 1f;
         int instantiatedCount = 0;
+        GameObject instantiated;
         for (float j = yStart; j >= yEnd; j-=0.5f)
         {
             for(float i = xStart; i <= xEnd; i++)
@@ -48,7 +49,8 @@ public class LevelCreater : MonoBehaviour
                 {
                     if(!rand75())
                     {
-                        Instantiate(brick, new Vector3(i, j), Quaternion.identity);
+                        instantiated = Instantiate(brick, new Vector3(i, j), Quaternion.identity);
+                        instantiated.GetComponent<BrickObjectScript>().setBrickHealth(Random.Range(1, 4));
                         instantiatedCount += 1;
                     }
                 }
@@ -56,7 +58,8 @@ public class LevelCreater : MonoBehaviour
                 {
                     if(rand50())
                     {
-                        Instantiate(brick, new Vector3(i, j), Quaternion.identity);
+                        instantiated = Instantiate(brick, new Vector3(i, j), Quaternion.identity);
+                        instantiated.GetComponent<BrickObjectScript>().setBrickHealth(Random.Range(1, 4));
                         instantiatedCount += 1;
                     }
                 }
@@ -64,13 +67,15 @@ public class LevelCreater : MonoBehaviour
                 {
                     if (rand75())
                     {
-                        Instantiate(brick, new Vector3(i, j), Quaternion.identity);
+                        instantiated = Instantiate(brick, new Vector3(i, j), Quaternion.identity);
+                        instantiated.GetComponent<BrickObjectScript>().setBrickHealth(Random.Range(1, 4));
                         instantiatedCount += 1;
                     }
                 }
                 else if(level == 4)
                 {
-                    Instantiate(brick, new Vector3(i, j), Quaternion.identity);
+                    instantiated = Instantiate(brick, new Vector3(i, j), Quaternion.identity);
+                    instantiated.GetComponent<BrickObjectScript>().setBrickHealth(Random.Range(1, 4));
                     instantiatedCount += 1;
                 }
             }

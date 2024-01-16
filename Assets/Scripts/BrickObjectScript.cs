@@ -6,11 +6,6 @@ public class BrickObjectScript : MonoBehaviour
 {
     private int brickHealth = 3;
 
-    string brickHealth2Color = "47A44E";
-    string brickHealth1Color = "5ED267";
-
-    string[] brickColors = { "5ED267", "47A44E" };
-
     float[] rValues = { 17f, 255f, 255f };
     float[] gValues = { 255f, 244f, 48f };
     float[] bValues = { 0f, 0f, 0f };
@@ -20,7 +15,7 @@ public class BrickObjectScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        setBrickHealth(brickHealth);
+        
     }
 
     // Update is called once per frame

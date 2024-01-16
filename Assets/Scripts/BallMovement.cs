@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BallMovement : MonoBehaviour
@@ -120,21 +121,12 @@ public class BallMovement : MonoBehaviour
         }
         */
 
+        /*
+        // v3
         if (collision.gameObject.tag.Equals("Player"))
         {
             xDiff = transform.position.x - collision.gameObject.transform.position.x;
             yDirection = -yDirection;
-            /*
-            if(collision.gameObject.GetComponent<Rigidbody2D>().velocity.x == 0)
-            {
-                xDiff = xDiff;
-            }
-            else
-            {
-                xDiff = transform.position.x - collision.gameObject.transform.position.x;
-            }
-            yDirection = -yDirection;
-            */
         }
         else if(collision.gameObject.tag.Equals("UpperWall"))
         {
@@ -151,22 +143,7 @@ public class BallMovement : MonoBehaviour
         // 0.25
         else if (collision.gameObject.tag.Equals("Brick"))
         {
-            // yDirection = -yDirection;
             float xPos = transform.position.x;
-            /*
-            if(xPos <= collision.gameObject.transform.position.x - 0.25 || xPos >= collision.gameObject.transform.position.x + 0.25)
-            {
-                yDirection = yDirection;
-                xDiff = -xDiff;
-            }
-            else
-            {
-                yDirection = -yDirection;
-                xDiff = xDiff;
-            }
-            */
-            // Debug.Log(collision.gameObject.transform.position);
-            // Debug.Log(transform.position);
             if(xPos >= collision.gameObject.transform.position.x - 0.5f && xPos <= collision.gameObject.transform.position.x + 0.5f)
             {
                 yDirection = -yDirection;
@@ -175,6 +152,95 @@ public class BallMovement : MonoBehaviour
             {
                 xDiff = -xDiff;
             }
+        }
+        */
+
+        /*
+        // v4 still broken T_T
+        if (collision.gameObject.tag.Equals("Player"))
+        {
+            xDiff = transform.position.x - collision.gameObject.transform.position.x;
+            yDirection = 1;
+        }
+        else if (collision.gameObject.tag.Equals("UpperWall"))
+        {
+            yDirection = -1;
+        }
+        else if (collision.gameObject.tag.Equals("RightWall"))
+        {
+            xDiff = -xDiff;
+        }
+        else if (collision.gameObject.tag.Equals("LeftWall"))
+        {
+            xDiff = -xDiff;
+        }
+        else if(collision.gameObject.tag.Equals("Brick"))
+        {
+            float xPos = transform.position.x;
+            float yPos = transform.position.y;
+            if(xPos >= collision.gameObject.transform.position.x + 0.5f + 0.123f)
+            {
+                if (xDiff <= 0) xDiff = -xDiff;
+            }
+            else if(xPos <= collision.gameObject.transform.position.y - 0.5f - 0.123f)
+            {
+                if (xDiff >= 0) xDiff = -xDiff;
+            }
+
+            if(yPos < collision.gameObject.transform.position.y - 0.25f - 0.123f)
+            {
+                if(yDirection == 1) yDirection = -yDirection;
+            }
+            else if(yPos > collision.gameObject.transform.position.y + 0.25f + 0.123f)
+            {
+                if(yDirection == -1) yDirection = -yDirection;
+            }
+        }
+        */
+
+        if (collision.gameObject.tag.Equals("Player"))
+        {
+            xDiff = transform.position.x - collision.gameObject.transform.position.x;
+            yDirection = 1;
+        }
+        else if (collision.gameObject.tag.Equals("UpperWall"))
+        {
+            yDirection = -1;
+        }
+        else if (collision.gameObject.tag.Equals("RightWall"))
+        {
+            xDiff = -xDiff;
+        }
+        else if (collision.gameObject.tag.Equals("LeftWall"))
+        {
+            xDiff = -xDiff;
+        }
+        else if (collision.gameObject.tag.Equals("Brick"))
+        {
+            float xPos = transform.position.x;
+            float yPos = transform.position.y;
+            /*
+            if (yPos <= collision.gameObject.transform.position.y + 0.25f + 0.122f && yPos >= collision.gameObject.transform.position.y - 0.25f - 0.122f && xPos >= collision.gameObject.transform.position.x + 0.5f + 0.122f && xPos <= collision.gameObject.transform.position.x - 0.5f - 0.122f)
+            {
+                xDiff = -xDiff;
+            }
+            else
+            {
+                yDirection = -yDirection;
+            }
+            */
+
+            float brickXPos = collision.gameObject.transform.position.x;
+            float brickYPos = collision.gameObject.transform.position.y;
+            if(yPos >= brickYPos - 0.25f && yPos <= brickYPos + 0.25f)
+            {
+                xDiff = -xDiff;
+            }
+            else
+            {
+                yDirection = -yDirection;
+            }
+
         }
     }
 }
