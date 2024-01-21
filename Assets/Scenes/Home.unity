@@ -359,7 +359,7 @@ MonoBehaviour:
     loop: 0
     audioSource: {fileID: 0}
   - soundName: GameTheme
-    clip: {fileID: 8300000, guid: 4ecfa5f2792f6504588067ae98801519, type: 3}
+    clip: {fileID: 8300000, guid: eb913568911711644b9a05dcd1d06366, type: 3}
     pitch: 1
     volume: 0.07
     loop: 1
