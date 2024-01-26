@@ -8,7 +8,7 @@ public class EndManager : MonoBehaviour
     void Start()
     {
         FindObjectOfType<AudioManager>().stopAudio("GameTheme");
-        FindObjectOfType<AudioManager>().playAudio("HomeTheme");
+        FindObjectOfType<AudioManager>().playAudio("EndingTheme");
     }
 
     // Update is called once per frame

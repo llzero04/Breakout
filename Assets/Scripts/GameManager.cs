@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public Text livesUIText;
     public Text levelText;
     public GameObject gameOverUIPanel;
+    public GameObject levelCompleteUIPanel;
 
     int score = 0;
     int level = 1;
@@ -79,8 +80,16 @@ public class GameManager : MonoBehaviour
         else
         {
             PlayerPrefs.SetInt("GameLevel", level + 1);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            Destroy(GameObject.FindGameObjectWithTag("Ball"));
+            // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            levelCompleteUIPanel.SetActive(true);
+
         }
+    }
+
+    public void triggerNextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void restartLevel()
